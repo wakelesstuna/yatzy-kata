@@ -25,6 +25,20 @@ public class YatzyTest {
 		}
 	}
 
+	@Test
+	public void testIfNotCorrectCategory(){
+
+		int score = yatzyScorer.calculateScore(Category.TEST_ENUM, new YatzyRoll(5, 2, 1, 4, 6));
+		assertEquals(0, score);
+	}
+
+	@Test
+	public void testIfNotCorrectCategory2(){
+
+		int score = yatzyScorer.calculateScore(Category.TEST_ENUM, new YatzyRoll(5, 2, 1, 4, 6));
+		assertNotEquals(15, score);
+	}
+
 
 	//------------ CHANCE -----------------\\
 	@Test
@@ -50,6 +64,18 @@ public class YatzyTest {
 	public void yatzyScoresNotCorrectly() {
 		int score = yatzyScorer.calculateScore(Category.YATZY, new YatzyRoll(5, 2, 1, 4, 6));
 		assertNotEquals(15, score);
+	}
+
+	@Test
+	public void countDiceSumCorrect(){
+		int score = yatzyScorer.countDiceSum(new YatzyRoll(1, 2, 1, 4, 6), 1);
+		assertEquals(2, score);
+	}
+
+	@Test
+	public void countDiceSumNotCorrect(){
+		int score = yatzyScorer.countDiceSum(new YatzyRoll(1, 2, 1, 4, 6), 1);
+		assertNotEquals(50, score);
 	}
 
 	//------------ ONES -----------------\\
@@ -261,7 +287,7 @@ public class YatzyTest {
 	@Test
 	public void fourOfKindWithOnes() {
 		int score = yatzyScorer.calculateScore(Category.FOUR_OF_A_KIND, new YatzyRoll(1, 1, 1, 1, 6));
-		assertEquals(3, score);
+		assertEquals(4, score);
 	}
 
 	@Test
@@ -273,7 +299,7 @@ public class YatzyTest {
 	@Test
 	public void fourOfKindWithThrees() {
 		int score = yatzyScorer.calculateScore(Category.FOUR_OF_A_KIND, new YatzyRoll(1, 3, 3, 3, 3));
-		assertEquals(9, score);
+		assertEquals(12, score);
 	}
 
 	@Test

@@ -2,6 +2,7 @@ package com.king.kata.yatzy;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.stream.IntStream;
 
 public class YatzyRoll {
 	private final int[] dice;
@@ -13,6 +14,16 @@ public class YatzyRoll {
 	public int[] getDice() {
 		return checkIfAllPositives(dice);
 	}
+
+	public int[] getSortedArray() {
+		return getDiceAsStream().sorted().toArray();
+	}
+
+	public IntStream getDiceAsStream(){
+		return Arrays.stream(checkIfAllPositives(dice));
+	}
+
+
 
 	private int[] checkIfAllPositives(int[] ints){
 		if (Arrays.stream(ints).allMatch(e -> e >= 1)){

@@ -15,7 +15,8 @@ public enum Category {
 	SMALL_STRAIGHT,
 	LARGE_STRAIGHT,
 	FULL_HOUSE,
-	TWO_PAIR
+	TWO_PAIR,
+	TEST_ENUM
 
 
 }
